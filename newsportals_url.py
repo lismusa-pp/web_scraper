@@ -1,0 +1,22 @@
+news_portals = {
+    "BBC News": "https://www.bbc.com/news",
+    "CNN": "https://edition.cnn.com/world",
+    "Reuters": "https://www.reuters.com/world/",
+    "Al Jazeera": "https://www.aljazeera.com/news/",
+    "The Guardian": "https://www.theguardian.com/international",
+    "New York Times": "https://www.nytimes.com/section/world",
+    "Washington Post": "https://www.washingtonpost.com/world/",
+    "Fox News": "https://www.foxnews.com/world",
+    "ABC News": "https://abcnews.go.com/International",
+    "CBS News": "https://www.cbsnews.com/world/",
+    "NBC News": "https://www.nbcnews.com/world",
+    "Bloomberg": "https://www.bloomberg.com/international",
+    "CNBC": "https://www.cnbc.com/world-news/",
+    "Forbes": "https://www.forbes.com/international/",
+    "The Hindu": "https://www.thehindu.com/news/international/",
+    "Times of India": "https://timesofindia.indiatimes.com/world",
+    "Japan Times": "https://www.japantimes.co.jp/news/",
+    "DW News": "https://www.dw.com/en/top-stories/s-9097",
+    "France 24": "https://www.france24.com/en/",
+    "Sydney Morning Herald": "https://www.smh.com.au/world"
+}
