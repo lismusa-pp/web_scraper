@@ -4,6 +4,29 @@ from bs4 import BeautifulSoup
 from processing_logic import clean_url, fetch_description
 from newsportals_url import news_portals
 
+import random
+import requests
+
+# List of possible User-Agent strings to use for each request
+user_agents = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/91.0.864.64 Safari/537.36"
+]
+
+# Function to fetch news articles
+def fetch_news(url):
+    headers = {
+        "User-Agent": random.choice(user_agents),
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+    }
+
+    response = requests.get(url, headers=headers)
+    # Your scraping logic here
+
+
 def scrape_news():
     all_news = []
     for portal, url in news_portals.items():
