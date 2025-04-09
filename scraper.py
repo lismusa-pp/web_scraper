@@ -26,7 +26,26 @@ def fetch_news(url):
     response = requests.get(url, headers=headers)
     # Your scraping logic here
 
+proxies = [
+    {"http": "http://proxy1:port", "https": "https://proxy1:port"},
+    {"http": "http://proxy2:port", "https": "https://proxy2:port"},
+    {"http": "http://proxy3:port", "https": "https://proxy3:port"},
+]
 
+def fetch_news(url):
+    headers = {
+        "User-Agent": random.choice(user_agents),
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+    }
+
+    # Choose a random proxy from the list
+    proxy = random.choice(proxies)
+
+    response = requests.get(url, headers=headers, proxies=proxy)
+    # Your scraping logic here 
+
+    
 def scrape_news():
     all_news = []
     for portal, url in news_portals.items():
