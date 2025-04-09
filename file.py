@@ -63,49 +63,67 @@ def update_status(message):
 
 def fetch_news():
     global all_news
-    all_news.clear()  # Clear existing news data
+    all_news.clear()
     update_status("Fetching latest news...")
-    
-    new_articles = []  # Temporary storage for new articles
-    
+
+    new_articles = []
+
     for portal, url in news_portals.items():
         try:
             response = requests.get(url, timeout=10)
             if response.status_code != 200:
                 continue
-            
+
             soup = BeautifulSoup(response.text, "lxml")
-            articles = soup.find_all("a", href=True)
+            # Try to find meaningful titles inside headlines
+            article_links = soup.find_all("a", href=True)
 
-            for idx, article in enumerate(articles[:2], start=1):  # Limit to the latest 2 articles per portal
+            count = 0
+            for article in article_links:
                 title = article.get_text(strip=True)
-                article_url = clean_url(article["href"], url)
-                description = fetch_description(article_url)  # Fetch the first sentence as description
-                
-                # Check if the article is already in the list by URL
-                if not any(news[4] == article_url for news in all_news):
-                    new_articles.append([idx, portal, title, description, article_url])
+                if not title or len(title) < 10:
+                    continue
+                # Skip common non-headline phrases
+                if any(phrase in title.lower() for phrase in [
+                    "skip to content", "sign in", "log in", "menu", "home", "search", "live", "read more"
+                ]):
+                    continue
+                # Try to find links that are part of headlines or titles
+                parent_classes = " ".join(article.get("class", []))
+                if (
+                    article.find_parent(["h1", "h2", "h3"]) or
+                    "title" in parent_classes.lower() or
+                    "headline" in parent_classes.lower()
+                ):
+                    article_url = clean_url(article["href"], url)
+                    description = fetch_description(article_url)
 
-        except Exception:
+                    if not any(news[4] == article_url for news in all_news):
+                        count += 1
+                        new_articles.append([count, portal, title, description, article_url])
+
+                if count >= 2:
+                    break
+
+        except Exception as e:
+            print(f"Error fetching from {portal}: {e}")
             continue
-    
-    # Update the all_news list with the new articles
+
     all_news.extend(new_articles)
-    
-    # Store new data in CSV
+
     with open("news_data.csv", "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["ID", "Portal", "Title", "Description", "URL to Portal"])
         writer.writerows(all_news)
-    
+
     update_table()
     update_status("Latest news fetched successfully!")
-    
-    # Prevent multiple overlapping timers
+
     if hasattr(fetch_news, "timer"):
         fetch_news.timer.cancel()
     fetch_news.timer = threading.Timer(300, fetch_news)
     fetch_news.timer.start()
+
 
 def update_table():
     for row in tree.get_children():
