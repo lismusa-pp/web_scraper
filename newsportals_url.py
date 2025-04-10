@@ -1,4 +1,4 @@
-news_portals = {
+NEWS_PORTAL = {
     "BBC News": "https://www.bbc.com/news",
     "CNN": "https://edition.cnn.com/world",
     "Reuters": "https://www.reuters.com/world/",

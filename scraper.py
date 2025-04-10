@@ -2,11 +2,11 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 from processing_logic import clean_url, fetch_description
-from newsportals_url import news_portals
+from newsportals_url import NEWS_PORTAL
 
 def scrape_news():
     all_news = []
-    for portal, url in news_portals.items():
+    for portal, url in NEWS_PORTAL.items():
         try:
             response = requests.get(url, timeout=10)
             if response.status_code != 200:
@@ -46,3 +46,6 @@ def scrape_news():
         writer.writerows(all_news)
 
     return all_news
+
+
+
