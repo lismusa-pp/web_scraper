@@ -32,20 +32,22 @@ def scrape_news():
                 ):
                     article_url = clean_url(article["href"], url)
                     description = fetch_description(article_url)
-                    all_news.append([count + 1, portal, title, description, article_url])
+
+                    # ✅ Now using tuple instead of list
+                    all_news.append((count + 1, portal, title, description, article_url))
                     count += 1
+
                 if count >= 2:
                     break
         except Exception as e:
             print(f"Error fetching from {portal}: {e}")
             continue
 
+    # Optional: Save to CSV
     with open("news_data.csv", "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["ID", "Portal", "Title", "Description", "URL to Portal"])
         writer.writerows(all_news)
 
     return all_news
-
-
 

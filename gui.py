@@ -1,11 +1,12 @@
 import ttkbootstrap as tb
 from ttkbootstrap.constants import *
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox, filedialog
 import threading
 from datetime import datetime
 import webbrowser
-from scraper import scrape_news  # Ensure it returns list of (ID, Portal, Title, Desc, URL)
+import json
+from scraper import scrape_news  # Must return: (ID, Portal, Title, Description, URL[, Category])
 
 all_news = []
 filtered_news = []
@@ -14,6 +15,7 @@ def update_table(tree, data):
     tree.delete(*tree.get_children())
     for news in data[:30]:
         tree.insert("", "end", values=news)
+    tree.yview_moveto(0)  # Auto-scroll to top
 
 def update_status(status_label, message, footer_label=None):
     status_label.config(text=message)
@@ -25,11 +27,17 @@ def fetch_and_display_news(tree, status_label, footer_label, search_entry):
     global all_news, filtered_news
     update_status(status_label, "📰 Fetching latest news...", footer_label)
     try:
-        all_news = scrape_news()
+        raw_data = scrape_news()
+        all_news.clear()
+        for item in raw_data:
+            if len(item) == 5:
+                all_news.append(item + ("General",))  # Add default category
+            else:
+                all_news.append(item)
         filtered_news = all_news.copy()
         update_table(tree, filtered_news)
         update_status(status_label, "✅ Latest news fetched successfully!", footer_label)
-        search_entry.delete(0, tk.END)  # Reset search bar
+        search_entry.delete(0, tk.END)
     except Exception as e:
         update_status(status_label, f"❌ Error: {e}", footer_label)
 
@@ -43,7 +51,7 @@ def fetch_and_display_news(tree, status_label, footer_label, search_entry):
 def on_search(tree, query):
     global all_news, filtered_news
     query = query.lower()
-    filtered_news = [news for news in all_news if query in news[2].lower() or query in news[3].lower()]
+    filtered_news = [n for n in all_news if query in n[2].lower() or query in n[3].lower()]
     update_table(tree, filtered_news)
 
 def on_row_click(event, tree):
@@ -53,10 +61,26 @@ def on_row_click(event, tree):
         if url:
             webbrowser.open_new_tab(url)
 
+def save_selected_to_json(tree):
+    selected_items = tree.selection()
+    if not selected_items:
+        messagebox.showinfo("No Selection", "Please select at least one news item to save.")
+        return
+
+    news_data = [tree.item(item)["values"] for item in selected_items]
+    save_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON files", "*.json")])
+    if save_path:
+        try:
+            with open(save_path, "w", encoding="utf-8") as f:
+                json.dump(news_data, f, indent=4, ensure_ascii=False)
+            messagebox.showinfo("Saved", f"{len(news_data)} news item(s) saved to:\n{save_path}")
+        except Exception as e:
+            messagebox.showerror("Error", f"Failed to save: {e}")
+
 def launch_gui():
     app = tb.Window(themename="superhero")
     app.title("🗞️ News Scraper & Visualizer")
-    app.geometry("1100x640")
+    app.geometry("1200x660")
 
     # Header
     header = tb.Frame(app, padding=(10, 5))
@@ -85,36 +109,37 @@ def launch_gui():
                           command=lambda: [search_entry.delete(0, tk.END), update_table(tree, all_news)])
     clear_btn.pack(side=LEFT, padx=10)
 
+    save_btn = tb.Button(search_frame, text="⭐ Save to Favorites", bootstyle="warning outline",
+                         command=lambda: save_selected_to_json(tree))
+    save_btn.pack(side=LEFT, padx=20)
+
     # Table
     table_frame = tb.Frame(app)
     table_frame.pack(fill=BOTH, expand=YES, padx=15, pady=10)
 
-    columns = ["ID", "Portal", "Title", "Description", "URL"]
+    columns = ["ID", "Portal", "Title", "Description", "URL", "Category"]
     tree = ttk.Treeview(table_frame, columns=columns, show="headings")
+
     style = ttk.Style()
     style.configure("Treeview.Heading", font=("Segoe UI", 11, "bold"))
     style.configure("Treeview", font=("Segoe UI", 10), rowheight=28)
 
+    col_widths = {"ID": 50, "Portal": 100, "Title": 250, "Description": 300, "URL": 250, "Category": 100}
     for col in columns:
         tree.heading(col, text=col)
-        if col == "Description":
-            tree.column(col, width=320, anchor="w")
-        elif col == "Title":
-            tree.column(col, width=280, anchor="w")
-        elif col == "URL":
-            tree.column(col, width=200)
-        else:
-            tree.column(col, width=100)
+        tree.column(col, width=col_widths.get(col, 120), anchor="w")
 
     tree.pack(fill=BOTH, expand=YES)
-    tree.bind("<Double-1>", lambda e: on_row_click(e, tree))  # Double-click to open link
+    tree.bind("<Double-1>", lambda e: on_row_click(e, tree))
 
     # Footer
     footer = tb.Frame(app)
     footer.pack(fill=X, padx=15, pady=(0, 10))
+
     footer_label = tb.Label(footer, text="Last updated: --", font=("Segoe UI", 10), anchor="w")
     footer_label.pack(side=LEFT)
 
     # Initial load
     fetch_and_display_news(tree, status_label, footer_label, search_entry)
     app.mainloop()
+
