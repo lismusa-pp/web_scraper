@@ -10,7 +10,7 @@ import os
 import ctypes  # Needed for taskbar icon fix
 from scraper import scrape_news  # Must return: (ID, Portal, Title, Description, URL[, Category])
 
-# ✅ Set AppUserModelID BEFORE window creation (critical for taskbar icon appearance)
+# Set AppUserModelID BEFORE window creation (critical for taskbar icon appearance)
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(u"news.scraper.app")
 
 all_news = []
@@ -85,7 +85,7 @@ def save_selected_to_json(tree):
 def launch_gui():
     app = tb.Window(themename="superhero")
 
-    # ✅ Set window icon
+    # Set window icon
     icon_path = os.path.join(os.path.dirname(__file__), "news_icon.ico")
     if os.path.exists(icon_path):
         app.iconbitmap(icon_path)
@@ -202,6 +202,6 @@ def launch_gui():
 
     app.mainloop()
 
-# ✅ Entry point
+# Entry point
 if __name__ == "__main__":
     launch_gui()
