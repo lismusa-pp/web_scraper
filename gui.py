@@ -33,13 +33,13 @@ def update_status(status_label, message, footer_label=None):
 def fetch_and_display_news(tree, status_label, footer_label, search_entry, loading_label):
     global all_news, filtered_news
     update_status(status_label, "📰 Fetching latest news...", footer_label)
-    loading_label.config(state="normal")  # Show loading indicator
+    loading_label.config(state="normal")
     try:
         raw_data = scrape_news()
         all_news.clear()
         for item in raw_data:
             if len(item) == 5:
-                all_news.append(item + ("General",))  # Add default category
+                all_news.append(item + ("General",))
             else:
                 all_news.append(item)
         filtered_news = all_news.copy()
@@ -49,7 +49,7 @@ def fetch_and_display_news(tree, status_label, footer_label, search_entry, loadi
     except Exception as e:
         update_status(status_label, f"❌ Error: {e}", footer_label)
     finally:
-        loading_label.config(state="hidden")  # Hide loading indicator
+        loading_label.config(state="hidden")
 
     if hasattr(fetch_and_display_news, "timer"):
         fetch_and_display_news.timer.cancel()
@@ -61,9 +61,9 @@ def fetch_and_display_news(tree, status_label, footer_label, search_entry, loadi
 def on_search(tree, query):
     global all_news, filtered_news, search_history
     if query.lower() not in [item.lower() for item in search_history]:
-        search_history.append(query)  # Add new search query to history
+        search_history.append(query)
         if len(search_history) > 5:
-            search_history.pop(0)  # Keep only the last 5 searches
+            search_history.pop(0)
     update_search_history_treeview()
     
     query = query.lower()
@@ -100,7 +100,7 @@ def update_search_history_treeview():
 
 def on_search_history_select(event, tree):
     selected_item = search_history_treeview.item(search_history_treeview.focus())
-    selected_query = selected_item['values'][1]  # Get search query
+    selected_query = selected_item['values'][1]
     search_entry.delete(0, tk.END)
     search_entry.insert(tk.END, selected_query)
     on_search(tree, selected_query)
@@ -118,25 +118,22 @@ def decrease_font_size():
 def update_fonts():
     status_label.config(font=("Segoe UI", font_size))
     search_entry.config(font=("Segoe UI", font_size))
-    # Update other widgets similarly
     tree.config(font=("Segoe UI", font_size))
 
 def on_key_press(event):
-    if event.keysym == 'Return':  # Enter key
+    if event.keysym == 'Return':
         fetch_and_display_news(tree, status_label, footer_label, search_entry, loading_label)
-    elif event.keysym == 'Escape':  # Escape key
-        app.quit()  # Close the app
+    elif event.keysym == 'Escape':
+        app.quit()
 
 def launch_gui():
     global tree, status_label, footer_label, search_entry, loading_label, app, search_history_treeview
     app = tb.Window(themename="minty")
-    app.configure(background="#2E2E2E")  # Dark background for better contrast
+    app.configure(background="#2E2E2E")
 
     icon_path = os.path.join(os.path.dirname(__file__), "news_icon.ico")
     if os.path.exists(icon_path):
         app.iconbitmap(icon_path)
-    else:
-        print("Icon file not found!")
 
     app.title("\U0001f5f3\ufe0f News Scraper & Visualizer")
     app.geometry("1200x660")
@@ -153,7 +150,6 @@ def launch_gui():
     )
     status_label.pack(side=LEFT, padx=10)
 
-    # Loading indicator
     loading_label = tb.Label(
         header,
         text="🔄 Fetching news...",
@@ -174,7 +170,6 @@ def launch_gui():
     )
     fetch_btn.pack(side=RIGHT, padx=10)
 
-    # Font size adjustment
     increase_font_btn = tb.Button(header, text="Increase Font Size", command=increase_font_size)
     increase_font_btn.pack(side=RIGHT, padx=10)
     
@@ -222,26 +217,22 @@ def launch_gui():
     )
     save_btn.pack(side=LEFT, padx=20)
 
-    # Search History Section with Label and Adjusted Size
     history_frame = tb.Frame(app, padding=(10, 5), bootstyle="light")
     history_frame.pack(fill=X, pady=5)
 
-    # Label for Search History
     history_label = tb.Label(history_frame, text="Search History", font=("Segoe UI", font_size, "bold"))
     history_label.pack(side=LEFT, padx=10)
 
-    # Treeview for Search History
     search_history_treeview = ttk.Treeview(
         history_frame,
         columns=("ID", "Search Query"),
         show="headings",
-        height=5  # Make it smaller by limiting visible rows
+        height=5
     )
     search_history_treeview.heading("ID", text="ID")
     search_history_treeview.heading("Search Query", text="Search Query")
     search_history_treeview.column("ID", width=50, anchor="center")
     search_history_treeview.column("Search Query", width=300, anchor="w")
-
     search_history_treeview.pack(fill="y", padx=10, pady=5)
 
     search_history_treeview.bind("<Double-1>", lambda e: on_search_history_select(e, tree))
@@ -252,7 +243,7 @@ def launch_gui():
     columns = ["ID", "Portal", "Title", "Description", "URL", "Category"]
     tree = ttk.Treeview(table_frame, columns=columns, show="headings")
 
-    style = ttk.Style()
+    style = tb.Style()
     style.configure("Treeview.Heading", font=("Segoe UI", font_size, "bold"))
     style.configure("Treeview", font=("Segoe UI", font_size), rowheight=28)
 
@@ -266,7 +257,8 @@ def launch_gui():
     }
     for col in columns:
         tree.heading(col, text=col)
-        tree.column(col, width=col_widths.get(col, 120), anchor="w")
+        anchor = "center" if col == "ID" else "w"
+        tree.column(col, width=col_widths.get(col, 120), anchor=anchor)
 
     tree.pack(fill=BOTH, expand=YES)
     tree.bind("<Double-1>", lambda e: on_row_click(e, tree))
