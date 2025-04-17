@@ -90,3 +90,68 @@
 2025-04-17 20:12:51,313 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
 2025-04-17 20:12:55,526 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
 2025-04-17 20:12:59,968 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:16:36,055 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:16:39,038 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:16:44,976 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:19:58,252 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:20:02,819 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:20:07,513 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:23:08,418 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:23:12,244 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:23:16,728 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:25:50,918 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:25:54,959 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:25:59,485 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:29:59,450 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:30:03,222 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:30:07,945 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:32:00,857 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:32:04,890 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:32:09,088 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:32:20,872 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:32:24,116 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:32:29,415 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:35:20,243 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:35:22,818 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:35:28,507 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:37:03,969 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:37:07,894 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:37:12,673 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:38:05,323 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:38:09,886 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:38:14,120 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:40:00,921 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:40:04,248 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:40:09,308 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:40:31,730 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:40:34,732 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:40:40,451 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:41:38,479 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:41:42,558 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:41:47,166 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:45:02,014 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:45:06,664 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:45:10,619 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:48:27,257 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:48:31,168 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:48:35,740 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:50:10,319 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:50:14,700 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:50:18,264 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:51:23,893 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:51:27,171 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:51:39,337 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:51:42,644 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:51:47,988 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:52:16,959 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:52:20,441 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:52:25,755 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:55:35,748 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:55:39,148 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:55:44,108 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 20:58:37,537 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 20:58:40,898 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 20:58:46,561 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
+2025-04-17 21:06:18,159 - ERROR - [Bloomberg] Error: 403 Client Error: Forbidden for url: https://www.bloomberg.com/international
+2025-04-17 21:06:21,492 - ERROR - [France 24] Error: 403 Client Error: Forbidden for url: https://www.france24.com/en/
+2025-04-17 21:06:26,466 - ERROR - [Washington Post] Error: HTTPSConnectionPool(host='www.washingtonpost.com', port=443): Read timed out. (read timeout=10)
